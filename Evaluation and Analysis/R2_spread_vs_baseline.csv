@@ -1,0 +1,9 @@
+measure,method,mean_diff_vs_baseline,briefs_higher,briefs,wilcoxon_p
+diversity_pooled,scamper,0.05182961857484449,6,6,0.03125
+diversity_pooled,triz,0.03503655422797835,5,6,0.21875
+diversity_pooled,analogy,0.040193092642247345,4,6,0.15625
+diversity_pooled,morphological,-0.05081978687871062,1,6,0.15625
+diversity_within_session,scamper,0.06110605576902898,6,6,0.03125
+diversity_within_session,triz,0.03185630464653438,5,6,0.21875
+diversity_within_session,analogy,0.023333702590943528,4,6,0.4375
+diversity_within_session,morphological,-0.05389036557258933,2,6,0.21875
