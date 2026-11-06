@@ -1,0 +1,45 @@
+Overview:
+The study investigates whether structuring a large language model's ideation process around established creativity methods, including SCAMPER, TRIZ, design-by-analogy and morphological analysis, changes the concepts it produces compared with a generic engineering design baseline. 
+Five prompting pipelines were applied to six engineering design briefs, generating 600 concepts in total. Concepts were evaluated using comparative judgement by an LLM judge and validated against human expert assessments.
+
+Repository structure
+.
+├── README.md
+├── generation_results.json                          # 150 sessions × 4 concepts (600 total)
+├── TRIZ_Contradiction_Matrix.xls                    # TRIZ matrix used by the TRIZ pipeline
+├── ICED27_Structure_Creativity_idea_generation.py   # Concept generation script (Gemini 3.8 Flash)
+├── ICED27_Structure_Creativity_comparative_evaluation.py  # Evaluation script (GPT 5.6 Luna judge)
+├── human_check_rater1.xlsx                          # Expert rater 1 judgements (36 pairs)
+├── human_check_rater2.xlsx                          # Expert rater 2 judgements
+├── human_check_rater3.xlsx                          # Expert rater 3 judgements
+└── Evaluation and Analysis/
+    ├── concepts.csv                                 # All 600 concepts with novelty/usefulness scores
+    ├── evaluation_report_iced.md                    # Full evaluation report with results and checks
+    ├── R1_novelty_usefulness.csv                    # Win rates and P(beats generic) per condition
+    ├── R2_spread_vs_baseline.csv                    # Semantic diversity vs baseline per condition
+    └── pools_by_brief_condition.csv                 # Diversity by brief and condition
+
+
+Scripts
+Concept generation:
+ICED27_Structure_Creativity_idea_generation.py
+Requires a Google Gemini API key.
+Generates concepts using Gemini 3.8 Flash with five pipelines: generic baseline, SCAMPER, TRIZ, design-by-analogy, and morphological analysis.
+
+Evaluation:
+Requires an OpenAI API key.
+ICED27_Structure_Creativity_comparative_evaluation.py generation_results.json
+
+
+Data
+generation_results.json. 
+The complete generation output: 150 sessions (5 conditions × 6 briefs × 5 runs), each containing the system prompt, step-by-step model interactions, method workings (e.g. SCAMPER operators chosen, TRIZ principles selected, analogy source domains), and the 4 generated concepts with titles and descriptions.
+
+Evaluation and Analysis/concepts.csv.
+One row per concept (600 rows) with columns: concept_id, session_id, brief_id, brief_type, condition, run title, description, word_count novelty, usefulness, standardised within each brief distinctiveness.
+
+human_check_rater[1-3].xlsx
+Independent judgements from three experts on 36 concept pairs, used to validate the LLM judge (Table 4 in the paper).
+
+Licence
+This dataset and code are provided for research purposes. Please cite the paper if you use them.
